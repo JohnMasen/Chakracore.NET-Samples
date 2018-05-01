@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Resize": {
+      "commandName": "Project",
+      "commandLineArgs": "/scriptFolder:Scripts\\Resize /module:resize /class:resize"
+    }
+  }
+}
