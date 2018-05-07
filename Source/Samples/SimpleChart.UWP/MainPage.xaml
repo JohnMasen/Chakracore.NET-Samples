@@ -10,7 +10,14 @@
       x:Class="SimpleChart.UWP.MainPage"
       mc:Ignorable="d ignore"
       DataContext="{Binding Main, Source={StaticResource Locator}}"  Unloaded="Page_Unloaded" Loaded="Page_Loaded" >
+    <Page.Resources>
+        <DataTemplate x:Key="ListViewItemTemplate1">
+            <Grid>
+                <TextBlock Text="{Binding Path=Name}"/>
+            </Grid>
+        </DataTemplate>
 
+    </Page.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="189*"/>
@@ -18,17 +25,23 @@
         </Grid.ColumnDefinitions>
         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <Grid.RowDefinitions>
-                <RowDefinition Height="857*"/>
-                <RowDefinition Height="172*"/>
+                <RowDefinition Height="463*"/>
+                <RowDefinition Height="137*"/>
+                <RowDefinition Height="120*"/>
             </Grid.RowDefinitions>
-            <ListView HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-            <Button x:Name="btnGo" Content="Button" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1"/>
-           
+            <ListView HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ItemsSource="{Binding Path=Folders}" ItemTemplate="{StaticResource ListViewItemTemplate1}" SelectedItem="{Binding Path=SelectedItem, Mode=TwoWay}" />
+            <Button x:Name="btnGo" Content="Go" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="2" Command="{Binding Path=Run}" />
+            <Button Content="Set Root" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Command="{Binding Path=ChooseRoot}"/>
+
 
         </Grid>
-        
-            <canvas:CanvasAnimatedControl x:Name="canvas" Draw="canvas_DrawAnimated" CreateResources="canvas_CreateResources"   Grid.Row="1" Grid.Column="1" Update="canvas_Update" SizeChanged="canvas_SizeChanged" />
-        
+        <Viewbox   Grid.Row="1" Grid.Column="1" Stretch="Fill">
+
+            <canvas:CanvasAnimatedControl x:Name="canvas" Draw="canvas_DrawAnimated" CreateResources="canvas_CreateResources" Update="canvas_Update" SizeChanged="canvas_SizeChanged" Paused="True" Height="400" Width="800" />
+
+
+        </Viewbox>
+
 
     </Grid>
 </Page>
