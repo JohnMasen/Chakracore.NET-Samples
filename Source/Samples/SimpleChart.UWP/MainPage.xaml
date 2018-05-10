@@ -35,7 +35,7 @@
 
 
         </Grid>
-        <Viewbox   Grid.Row="1" Grid.Column="1" Stretch="Fill">
+        <Viewbox   Grid.Row="1" Grid.Column="1" Stretch="Fill" Margin="10,10,10,10">
 
             <canvas:CanvasAnimatedControl x:Name="canvas" Draw="canvas_DrawAnimated" CreateResources="canvas_CreateResources" Update="canvas_Update" SizeChanged="canvas_SizeChanged" Paused="True" Height="400" Width="800" />
 

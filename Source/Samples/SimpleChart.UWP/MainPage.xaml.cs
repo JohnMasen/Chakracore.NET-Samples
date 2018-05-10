@@ -66,7 +66,7 @@ namespace SimpleChart.UWP
             builder.BeginFigure(Vector2.Zero);
             foreach (var value in data) 
             {
-                builder.AddLine(new Vector2(XPosition, value));
+                builder.AddLine(new Vector2(XPosition, -value));
                 XPosition += step;
             }
 
@@ -109,8 +109,8 @@ namespace SimpleChart.UWP
         {
             bool wasPaused = canvas.Paused;
             canvas.Paused = true;
-            this.scale =  Matrix3x2.CreateScale((float)e.NewSize.Width,(float)e.NewSize.Height*0.5f);
-            this.scale *= Matrix3x2.CreateTranslation(0, (float)e.NewSize.Height * 0.5f);
+            this.scale = Matrix3x2.CreateScale((float)e.NewSize.Width, (float)e.NewSize.Height);
+            this.scale *= Matrix3x2.CreateTranslation(0, (float)e.NewSize.Height);
             strokeSize = 1 / (float)Math.Max(e.NewSize.Width, e.NewSize.Height);
             if (!wasPaused)
             {
